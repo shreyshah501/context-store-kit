@@ -65,7 +65,7 @@ deleted, so the store remembers what changed and when.
    ```bash
    git clone <your-private-repo-url> context-store
    cd context-store
-   ./setup.sh --name "Your Name" --timezone "America/Los_Angeles"
+   ./setup.sh --name "Your Name" --timezone "Europe/London"
    ```
 
 3. Paste the below-the-line section of `AGENTS.md` into your agent's
