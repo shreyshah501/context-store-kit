@@ -347,7 +347,7 @@ def main():
     p = sub.add_parser("init", help="first-run setup: seed files + config")
     p.add_argument("--name", help="store owner's name (for packets)")
     p.add_argument("--timezone", help="IANA timezone for log timestamps, "
-                                      "e.g. America/Los_Angeles")
+                                      "e.g. Europe/London")
     p.set_defaults(fn=cmd_init)
 
     p = sub.add_parser("start", help="print session-start context")
