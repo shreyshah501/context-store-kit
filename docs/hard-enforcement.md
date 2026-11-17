@@ -15,8 +15,10 @@ at fixed points in a session. The model cannot skip them.
   directory is a work directory. Personal context is never injected into
   work sessions.
 
-Hooks are a Claude Code (CLI) feature. Chat AIs have no hook system; they
-use the packet flow in `ANY-AI-INSTRUCTIONS.md` instead.
+Hooks are a Claude Code (CLI) feature. Most other assistants have no
+hook system at all — for them, use the scheduled write-back pattern in
+`docs/enforcement-without-hooks.md`. Chat AIs use the packet flow in
+`ANY-AI-INSTRUCTIONS.md` instead.
 
 ## The setup blurb
 

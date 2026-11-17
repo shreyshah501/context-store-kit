@@ -40,7 +40,11 @@ Three pieces, nothing else:
 Works with Claude Code and any `AGENTS.md`-aware tool directly, and with
 chat AIs (which can't read files) through the packet flow in
 `ANY-AI-INSTRUCTIONS.md`. Optional Claude Code hooks make read/write
-enforcement automatic — see `docs/hard-enforcement.md`.
+enforcement automatic — see `docs/hard-enforcement.md`. For models
+without hooks, the scheduled write-back pattern in
+`docs/enforcement-without-hooks.md` does the same job: a nightly job
+that reviews the day's sessions and logs them, so the store doesn't go
+stale just because no session ever "ends" cleanly.
 
 Weekly, the logs are distilled into the standing files; anything
 superseded is marked `Revoked YYYY-MM-DD: <reason>` in place rather than
@@ -119,10 +123,14 @@ end, synced through a remote named `origin`.
    each agent they use (Claude Code: `~/.claude/CLAUDE.md`), replacing
    `<PATH-TO-REPO>` with the store path from step 2. Preserve anything
    already in those files.
-7. **Offer hard enforcement (optional).** If the user uses Claude Code,
-   show them `docs/hard-enforcement.md` — SessionStart/Stop hooks that
-   make loading and write-back automatic. Install only if they say yes;
-   the blurb in that file is written for you to execute.
+7. **Offer enforcement (optional).** The standing instruction alone
+   fades — a model will eventually stop logging, silently. If the user
+   uses Claude Code, show them `docs/hard-enforcement.md` —
+   SessionStart/Stop hooks that make loading and write-back automatic.
+   For a model without hooks, use `docs/enforcement-without-hooks.md`
+   instead: set up a nightly scheduled write-back job from the spec in
+   that file. Install either only if they say yes; both files are
+   written for you to execute.
 8. **Verify, don't assert.** Run `python3 tools/context.py status`
    (shows the repo, owner, remote), then `... start` and show the user
    their own profile coming back. Log this setup session:
